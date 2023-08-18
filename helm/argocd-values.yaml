@@ -1,0 +1,17 @@
+
+server:
+  ingress:
+    enabled: true
+    hostname: argocd.local.gd
+
+redis:
+  master:
+    persistence:
+      size: 1Gi
+
+  replica:
+    replicaCount: 2
+    persistence:
+      size: 1Gi
+
+  architecture: replication
