@@ -28,7 +28,7 @@ spec:
 
 
   destination:
-    namespace: inalix-dev
+    namespace: devel
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
