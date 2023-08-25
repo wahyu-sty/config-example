@@ -1,5 +1,6 @@
 
 server:
+  insecure: true
   ingress:
     enabled: true
     hostname: argocd.local.gd
@@ -10,7 +11,7 @@ redis:
       size: 1Gi
 
   replica:
-    replicaCount: 2
+    replicaCount: 3
     persistence:
       size: 1Gi
 

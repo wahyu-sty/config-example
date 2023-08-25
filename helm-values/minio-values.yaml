@@ -1,0 +1,6 @@
+ingress:
+  enabled: true
+  hostname: minio.local.gd
+
+persistence:
+  size: 2Gi
