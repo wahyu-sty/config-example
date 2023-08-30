@@ -13,19 +13,8 @@ spec:
     targetRevision: v3.help.inalix.com
     helm:
       version: v3
-      values: |
-        image:
-          tag: v3
-        imagePullSecrets:
-          - name: d-inalix-com-cred
-        ingress:
-          enabled: true
-          hosts:
-            - host: help.0a0b0109.nip.io
-              paths:
-                - path: /
-                  pathType: Prefix
-
+      valueFiles:
+        - inalix-help-values.yaml
   destination:
     namespace: devel
     server: https://kubernetes.default.svc
