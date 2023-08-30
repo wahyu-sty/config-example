@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    path: helm
-    repoURL: https://git.inalix.co.id/inalix/docs.git
-    targetRevision: v3.help.inalix.com
+    path: charts/help/
+    repoURL: https://github.com/wahyu-sty/config-example.git
+    targetRevision: local
     helm:
       version: v3
       valueFiles:
