@@ -5,8 +5,9 @@ imagePullSecrets:
 ingress:
   enabled: true
   hosts:
-    - host: help-7f000101.nip.io 
+    - host: help.loca.gd
           # help-7f000101.nip.io 
+          # help.local.gd
           # help.0a0b0109.nip.io
       paths:
         - path: /
