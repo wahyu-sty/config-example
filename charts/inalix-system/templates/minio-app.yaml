@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio
+  namespace: inalix-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 12.8.1
+    chart: minio
+    helm:
+      version: v3
+      values: |
+        ingress:
+          enabled: true
+          hostname: minio.local.gd
+
+        persistence:
+          size: 1Gi
+
+  destination:
+    namespace: inalix-system
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

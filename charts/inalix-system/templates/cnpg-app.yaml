@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg
+  namespace: inalix-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: https://cloudnative-pg.github.io/charts
+    targetRevision: 1.20.2
+    chart: cloudnative-pg
+    helm:
+      version: v3
+      values: |
+        replicaCount: 1
+
+  destination:
+    namespace: cnpg-system
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      # selfHeal: true
+      # prune: true

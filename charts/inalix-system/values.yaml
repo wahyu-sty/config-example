@@ -1,0 +1,4 @@
+
+syncPolicy:
+  selfHeal: true
+

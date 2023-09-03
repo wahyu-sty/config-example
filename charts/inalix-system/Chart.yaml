@@ -1,0 +1,5 @@
+apiVersion: v2
+name: inalix-system
+description: Inalix base system database, cache, secret etc
+type: application
+version: 0.1.0
