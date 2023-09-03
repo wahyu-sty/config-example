@@ -14,8 +14,15 @@ spec:
     chart: redis
     helm:
       version: v3
-      valueFiles:
-        - _redis-values.yaml
+      values:
+        master:
+          persistence:
+            size: 1Gi
+        replica:
+          replicaCount: 2
+          persistence:
+            size: 1Gi
+        architecture: replication
 
   destination:
     namespace: inalix-system
