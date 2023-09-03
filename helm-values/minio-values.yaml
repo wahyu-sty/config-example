@@ -1,6 +1,6 @@
+# cmd: helm install minio bitnami/minio --values minio-values.yaml
 ingress:
   enabled: true
   hostname: minio.local.gd
-
 persistence:
   size: 2Gi

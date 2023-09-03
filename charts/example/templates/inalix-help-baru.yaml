@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    path: helm
-    repoURL: https://git.inalix.co.id/inalix/docs.git
+    path: example
+    repoURL: https://github.com/wahyu-sty/charts
     targetRevision: v3.help.inalix.com
     helm:
       version: v3

@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: d-inalix-cred
+  namespace: default
+spec:
+  encryptedData:
+    .dockerconfigjson: AgCEy8GIN/uqKTJRCrOCAcAMTmfA6sfZdtWty5J7R9AmF73+PYbgUCTbLLg4n9vhm51pt3C3tYkse5JDUEVLi9SWnoXuGluzosV/E73RP3kHz/PXdfnNMPen7OSwRILVGqukITNMILLb9XaP6i74Wxz7tbDLur21vmBBWUT/0P01oGjnMJ6Mqnt0QpwmYOin1ZzREj9RmkqF30wL31Xu4kCE91Fz+iGRlfCY70xGMfxvELQoPZjUM2U7B6x/gn2p2hcsEJ+x54bGdsdE77EkhJSv+QfM/WAxfkA4QcCZCir4rzc1vZ2Itgc/y5C2mQzJvwP0b9QIYUgWi3prMWMi1PrMnDmxX+KyNQLCe8ECMorJKWlKD45yMDQfiQ8llTXC6FT+cnaSjSPpO/sFGkl/0yNOaFfF/yEQRbCeyf6RnLIvKor/YdI5U5thn1LYsw0cc1NRxvNW7pi17TUSyijvrNifgSnvMbRW5ZDaacDgd6yXaf2kwlj1sQG6ZJ6+ACeOyQddTokJZKnR6J8davToxGY+qjVZ1g1B4OmlVTmI4/WzpH1bMkf0Uc+d3IcICadDRMRUjzDC1FJvsUa8Qsq1XCaIJLLL2IKpjfdgkEbRqMAU6oOZ4Ndm5z9lcNk4zWpna068gCqRm0V0r3jIbTaY394N+ZUZ/WYz/pjikzGx96ARJYew1B/ZxgRwM9B3defIzOf54gDUb53r3Z93OZTUNGCaDXNYcEg155UAB4V6mqaNKqSmU5l+MRDt8Uzw/QX5f2ZGcn0YyWr0Tmzm0eXJa1YYNHjWIPtrnmV/vcZv9bR7FOtWqdNXxrKMk5SeRQH3XF8dTf6rZ8Tf0e26vjqVn0VAxw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: d-inalix-cred
+      namespace: default
+    type: kubernetes.io/dockerconfigjson
+

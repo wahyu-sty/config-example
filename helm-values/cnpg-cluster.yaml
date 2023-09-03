@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pgc-test
+  name: pgc-inalix
 spec:
   instances: 3
   storage:
@@ -35,8 +35,8 @@ type: kubernetes.io/basic-auth
 ---
 apiVersion: v1
 data:
-  username: cGFzc3dvcmQ=
-  password: cGFzc3dvcmQ=
+  username: cG9zdGdyZXMK
+  password: aW5hbGl4T0sxMjMK
 kind: Secret
 metadata:
   name: superuser-secret

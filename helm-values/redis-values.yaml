@@ -1,10 +1,9 @@
+# cmd: helm install redis bitnami/redis --values redis-values.yaml
+architecture: replication
 master:
   persistence:
     size: 1Gi
-
 replica:
-  replicaCount: 2
   persistence:
     size: 1Gi
-
-architecture: replication
+  replicaCount: 2

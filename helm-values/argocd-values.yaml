@@ -1,18 +1,16 @@
-
-server:
-  insecure: true
-  ingress:
-    enabled: true
-    hostname: argocd.local.gd
-
+# cmd: helm install argocd bitnami/argo-cd --values argocd-values.yaml
 redis:
+  architecture: replication
   master:
     persistence:
       size: 1Gi
-
   replica:
-    replicaCount: 3
     persistence:
       size: 1Gi
+    replicaCount: 3
+server:
+  ingress:
+    enabled: true
+    hostname: argocd.local.gd
+  insecure: true
 
-  architecture: replication

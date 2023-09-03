@@ -1,0 +1,3 @@
+# cmd: helm install cnpg cnpg/cloudnative-pg --values cnpg-values.yaml -n cnpg-system
+
+replicaCount: 1

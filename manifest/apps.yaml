@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apps
+  name: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apps
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: apps
+    spec:
+      imagePullSecrets:
+        - name: d-inalix-cred
+      containers:
+      - image: d.inalix.com/core:dj2
+        name: core
+        resources: {}
