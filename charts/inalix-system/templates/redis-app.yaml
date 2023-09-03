@@ -15,7 +15,7 @@ spec:
     helm:
       version: v3
       valueFiles:
-        - redis-values.yaml
+        - _redis-values.yaml
 
   destination:
     namespace: inalix-system
