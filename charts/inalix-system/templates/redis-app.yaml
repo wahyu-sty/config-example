@@ -14,7 +14,7 @@ spec:
     chart: redis
     helm:
       version: v3
-      values:
+      values: |
         master:
           persistence:
             size: 1Gi
