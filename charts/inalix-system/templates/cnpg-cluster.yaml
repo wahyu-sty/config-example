@@ -1,0 +1,43 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pgc-inalix
+  namespace: inalix-system
+spec:
+  instances: 3
+  storage:
+    size: 1Gi
+
+  superuserSecret:
+    name: superuser-secret
+
+  bootstrap:
+    initdb:
+      database: inalix
+      owner: inalix
+      secret:
+        name: inalix-secret
+
+---
+apiVersion: v1
+data:
+  username: aW5hbGl4Cg==
+  password: cGFzc3dvcmQ=
+kind: Secret
+metadata:
+  name: inalix-secret
+  namespace: inalix-system
+type: kubernetes.io/basic-auth
+
+
+---
+apiVersion: v1
+data:
+  username: cG9zdGdyZXMK
+  password: aW5hbGl4T0sxMjMK
+kind: Secret
+metadata:
+  name: superuser-secret
+  namespace: inalix-system
+type: kubernetes.io/basic-auth
