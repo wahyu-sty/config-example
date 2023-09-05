@@ -1,4 +1,4 @@
-# cmd: helm install argocd bitnami/argo-cd --values argocd-values.yaml
+# cmd: helm install argocd bitnami/argo-cd --values argocd-values.yaml -n inalix-system --create-namespace
 redis:
   architecture: replication
   master:
@@ -7,10 +7,10 @@ redis:
   replica:
     persistence:
       size: 1Gi
-    replicaCount: 3
+    replicaCount: 2
 server:
   ingress:
     enabled: true
-    hostname: argocd.local.gd
+    hostname: argocd.10-11-1-31.nip.io
   insecure: true
 
