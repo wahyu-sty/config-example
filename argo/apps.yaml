@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    path: charts/help/
+    path: charts/inalix-system/
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: local
   destination:
