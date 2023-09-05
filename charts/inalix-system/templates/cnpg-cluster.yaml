@@ -30,6 +30,7 @@ data:
 kind: Secret
 metadata:
   name: inalix-secret
+  namespace: inalix-system
 type: kubernetes.io/basic-auth
 
 
@@ -41,4 +42,5 @@ data:
 kind: Secret
 metadata:
   name: superuser-secret
+  namespace: inalix-system
 type: kubernetes.io/basic-auth
