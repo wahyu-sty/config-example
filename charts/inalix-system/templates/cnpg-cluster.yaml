@@ -19,25 +19,26 @@ spec:
       secret:
         name: inalix-secret
 
+#   monitoring:
+#     enablePodMonitor: true
+
 ---
 apiVersion: v1
 data:
-  username: aW5hbGl4Cg==
+  username: aW5hbGl4
   password: cGFzc3dvcmQ=
 kind: Secret
 metadata:
   name: inalix-secret
-  namespace: inalix-system
 type: kubernetes.io/basic-auth
 
 
 ---
 apiVersion: v1
 data:
-  username: cG9zdGdyZXMK
-  password: aW5hbGl4T0sxMjMK
+  username: cG9zdGdyZXM=
+  password: SW5hbGl4MTIz
 kind: Secret
 metadata:
   name: superuser-secret
-  namespace: inalix-system
 type: kubernetes.io/basic-auth
