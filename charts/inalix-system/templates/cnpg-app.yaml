@@ -17,7 +17,7 @@ spec:
         replicaCount: 1
 
   destination:
-    namespace: {{ .Values.destinationNamespace }}
+    namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc
 
   syncPolicy:

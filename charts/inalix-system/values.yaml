@@ -3,4 +3,3 @@ syncPolicy:
   selfHeal: true
 
 ingressHostname: "local.gd"
-destinationNamespace: "inalix-system"

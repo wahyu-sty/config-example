@@ -16,12 +16,12 @@ spec:
       values: |
         ingress:
           enabled: true
-          hostname: minio.{{ .Values.ingressHostname }}
+          hostname: minio-fs.{{ .Values.ingressHostname }}
         persistence:
           size: 1Gi
 
   destination:
-    namespace: {{.Values.destinationNamespace}}
+    namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc
 
   syncPolicy:
