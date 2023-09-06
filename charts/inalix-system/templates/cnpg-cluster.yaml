@@ -3,7 +3,6 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: pgc-inalix
-  namespace: inalix-system
 spec:
   instances: 3
   storage:
@@ -30,7 +29,6 @@ data:
 kind: Secret
 metadata:
   name: inalix-secret
-  namespace: inalix-system
 type: kubernetes.io/basic-auth
 
 
@@ -42,5 +40,4 @@ data:
 kind: Secret
 metadata:
   name: superuser-secret
-  namespace: inalix-system
 type: kubernetes.io/basic-auth

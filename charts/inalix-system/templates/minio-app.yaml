@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: minio
-  namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
@@ -17,13 +16,12 @@ spec:
       values: |
         ingress:
           enabled: true
-          hostname: minio.{{ .Values.ingressHostName }}
-
+          hostname: minio.{{ .Values.ingressHostname }}
         persistence:
           size: 1Gi
 
   destination:
-    namespace: inalix-system
+    namespace: {{.Values.destinationNamespace}}
     server: https://kubernetes.default.svc
 
   syncPolicy:

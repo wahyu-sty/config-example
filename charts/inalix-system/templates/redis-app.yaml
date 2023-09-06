@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: redis
-  namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
@@ -25,7 +24,7 @@ spec:
         architecture: replication
 
   destination:
-    namespace: inalix-system
+    namespace: {{.Values.destinationNamespace}}
     server: https://kubernetes.default.svc
 
   syncPolicy:

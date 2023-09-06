@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cnpg
-  namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
@@ -18,7 +17,7 @@ spec:
         replicaCount: 1
 
   destination:
-    namespace: cnpg-system
+    namespace: {{ .Values.destinationNamespace }}
     server: https://kubernetes.default.svc
 
   syncPolicy:
