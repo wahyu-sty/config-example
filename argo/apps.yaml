@@ -11,6 +11,8 @@ spec:
     path: charts/inalix-system/
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: lamongan
+    values: |
+      ingressHostName:  10-11-1-31.nip.io
   destination:
     namespace: devel
     server: https://kubernetes.default.svc

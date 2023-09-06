@@ -2,3 +2,4 @@
 syncPolicy:
   selfHeal: true
 
+ingressHostName: "local.gd"

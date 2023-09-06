@@ -17,7 +17,7 @@ spec:
       values: |
         ingress:
           enabled: true
-          hostname: minio.local.gd
+          hostname: minio.{{ .Values.ingressHostName }}
 
         persistence:
           size: 1Gi
