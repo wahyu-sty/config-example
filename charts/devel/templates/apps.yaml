@@ -19,12 +19,10 @@ spec:
           hosts: 
           - host: aodb.{{ .Values.ingressHostname }}
         env:
-          - name: MODE
-            value: web
           - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-aodb-rw.inalix-system/inalix
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
           - name: REDIS_URL
-            value: redis://redis.inalix-system/1 # jb0d8AXz9S
+            value: redis://redis-master.inalix-system/1 # jb0d8AXz9S
   destination:
     namespace: {{ .Values.appNamespace }}
     server: https://kubernetes.default.svc
