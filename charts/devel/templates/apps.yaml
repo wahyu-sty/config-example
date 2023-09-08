@@ -13,8 +13,13 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        ingressHostname:  {{ .Values.ingressHostname }}
         imagePullSecrets:  {{ .Values.imagePullSecrets }}
+        ingress:
+          hosts: 
+          - host: aodb.{{ .Values.ingressHostname }}
+        env:
+          - name: MODE
+            value: web
   destination:
     namespace: {{ .Values.appNamespace }}
     server: https://kubernetes.default.svc
@@ -24,4 +29,3 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
-
