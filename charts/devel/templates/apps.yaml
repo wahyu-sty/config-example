@@ -14,6 +14,7 @@ spec:
     helm:
       values: |
         ingressHostname:  {{ .Values.ingressHostname }}
+        imagePullSecrets:  {{ .Values.imagePullSecrets }}
   destination:
     namespace: {{ .Values.appNamespace }}
     server: https://kubernetes.default.svc
