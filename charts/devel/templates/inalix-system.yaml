@@ -10,12 +10,12 @@ spec:
   source:
     path: charts/inalix-system/
     repoURL: https://github.com/wahyu-sty/config-example.git
-    targetRevision: lamongan
+    targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        ingressHostname:  10-11-1-31.nip.io
+        ingressHostname:  {{ .Values.ingressHostname }}
   destination:
-    namespace: inalix-system
+    namespace: {{ .Values.systemNamespace }}
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
