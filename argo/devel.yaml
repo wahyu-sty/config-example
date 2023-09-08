@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: inalix-system
+  name: devel
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: charts/inalix-system/
+    path: charts/devel/
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: lamongan
     helm:
