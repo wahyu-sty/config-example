@@ -22,7 +22,7 @@ spec:
           - name: MODE
             value: web
           - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-aodb-rw/inalix
+            value: postgres://inalix:password@pgc-aodb-rw.inalix-system/inalix
   destination:
     namespace: {{ .Values.appNamespace }}
     server: https://kubernetes.default.svc
