@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    path: charts/aodb/
+    path: charts/webapp/
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: {{ .Values.targetRevision }}
     helm:
