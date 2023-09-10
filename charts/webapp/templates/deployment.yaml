@@ -50,6 +50,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - uwsgi --ini /etc/inalix/uwsgi.ini
           livenessProbe:
             httpGet:
               path: /
