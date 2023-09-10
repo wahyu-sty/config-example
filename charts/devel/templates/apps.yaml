@@ -13,6 +13,8 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
+        image:
+          tag: v3-new
         imagePullSecrets:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
         ingress:
