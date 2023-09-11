@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 5555
               protocol: TCP
           env:
             {{- toYaml .Values.env | nindent 12 }}
@@ -47,11 +47,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 5555
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 5555
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
