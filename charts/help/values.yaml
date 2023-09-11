@@ -47,7 +47,7 @@ ingress:
   className: ""
   annotations:
     # traefik.ingress.kubernetes.io/router.entrypoints: web
-    # traefik.ingress.kubernetes.io/router.middlewares: belajar-inx-app-stripprefix@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: strip-prefix@kubernetescrd
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: help-7f000001.nip.io
