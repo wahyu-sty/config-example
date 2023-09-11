@@ -45,6 +45,8 @@ spec:
           args:
             - django-admin run_default_worker
           readinessProbe:
+            timeoutSeconds: 10
+            periodSeconds: 20
             exec:
               command:
                 - celery 
