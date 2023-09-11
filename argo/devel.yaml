@@ -13,7 +13,7 @@ spec:
     targetRevision: lamongan
     helm:
       values: |
-        ingressHostname:  10-11-1-31.nip.io
+        ingressHostname:  local.gd
         targetRevision:  lamongan
   destination:
     namespace: inalix-system

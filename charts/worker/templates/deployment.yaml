@@ -31,12 +31,19 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - django-admin migrate
           livenessProbe:
             httpGet:
               path: /
