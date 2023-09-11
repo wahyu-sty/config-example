@@ -50,6 +50,7 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+              containerPort: 8000
           env:
             {{- toYaml .Values.env | nindent 12 }}
           command:
@@ -60,11 +61,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8000
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
