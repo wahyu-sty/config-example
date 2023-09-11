@@ -44,14 +44,20 @@ spec:
             - -c
           args:
             - /usr/local/bin/daphne -b 0.0.0.0 inalix.asgi:application
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8000
           readinessProbe:
-            httpGet:
-              path: /
-              port: 8000
+            timeoutSeconds: 10
+            periodSeconds: 10
+            exec:
+              command:
+                - curl
+                - -qs
+                - -H
+                - Connection: Upgrade
+                - -H
+                - Upgrade: websocket
+                - -H
+                - Origin: http://127.0.0.1:80
+                - localhost:8000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
