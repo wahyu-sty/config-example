@@ -37,6 +37,13 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - /usr/local/bin/celery flower -A inalix.base.celery_app
           livenessProbe:
             httpGet:
               path: /

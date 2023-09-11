@@ -43,7 +43,7 @@ spec:
             - /bin/sh
             - -c
           args:
-            - django-admin migrate
+            - django-admin run_default_worker
           livenessProbe:
             httpGet:
               path: /
