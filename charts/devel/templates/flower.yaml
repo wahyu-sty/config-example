@@ -19,7 +19,11 @@ spec:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
         ingress:
           hosts: 
-          - host: flower.{{ .Values.ingressHostname }}
+          - host: {{ .Values.ingressHostname }}
+            paths:
+              - path: /flower/
+                pathType: Prefix
+
         env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
