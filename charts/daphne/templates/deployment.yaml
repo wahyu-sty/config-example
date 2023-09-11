@@ -49,15 +49,9 @@ spec:
             periodSeconds: 10
             exec:
               command:
-                - curl
-                - -qs
-                - -H
-                - "Connection: Upgrade"
-                - -H
-                - "Upgrade: websocket"
-                - -H
-                - "Origin: http://127.0.0.1:80"
-                - localhost:8000
+                - /bin/sh
+                - -c
+                - 'curl -qs -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Origin: http://127.0.0.1:80" localhost:8000'
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
