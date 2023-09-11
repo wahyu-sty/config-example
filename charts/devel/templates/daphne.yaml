@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aodb-daphne
+  name: {{ include "devel.fullname" . }}-daphne
   namespace: {{ .Values.systemNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aodb-flower
+  name: {{ include "devel.fullname" . }}-flower
   namespace: {{ .Values.systemNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io

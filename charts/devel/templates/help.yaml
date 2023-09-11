@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aodb-help
+  name: {{ include "devel.fullname" . }}-help
   namespace: {{ .Values.systemNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
