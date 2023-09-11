@@ -52,11 +52,11 @@ spec:
                 - curl
                 - -qs
                 - -H
-                - Connection: Upgrade
+                - "Connection: Upgrade"
                 - -H
-                - Upgrade: websocket
+                - "Upgrade: websocket"
                 - -H
-                - Origin: http://127.0.0.1:80
+                - "Origin: http://127.0.0.1:80"
                 - localhost:8000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
