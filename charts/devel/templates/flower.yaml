@@ -24,7 +24,6 @@ spec:
             paths:
               - path: /flower/
                 pathType: Prefix
-
         env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
