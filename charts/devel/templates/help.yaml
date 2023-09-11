@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aodb-help
+  namespace: {{ .Values.systemNamespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: charts/help/
+    repoURL: https://github.com/wahyu-sty/config-example.git
+    targetRevision: {{ .Values.targetRevision }}
+    helm:
+      values: |
+        image:
+          tag: v3
+        imagePullSecrets:
+          {{- toYaml .Values.imagePullSecrets | nindent 10 }}
+        ingress:
+          hosts: 
+          - host: help.{{ .Values.ingressHostname }}
+  destination:
+    namespace: {{ .Values.appNamespace }}
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
