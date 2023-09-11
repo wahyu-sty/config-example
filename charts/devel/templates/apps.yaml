@@ -21,6 +21,8 @@ spec:
           enabled: true
           hosts: 
           - host: {{ .Values.ingressHostname }}
+            paths:
+              - path: /
         env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
