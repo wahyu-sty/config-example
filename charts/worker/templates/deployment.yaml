@@ -44,14 +44,14 @@ spec:
             - -c
           args:
             - django-admin run_default_worker
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+                - celery 
+                - -A 
+                - inalix.base.celery_app
+                - inspect
+                - ping
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
