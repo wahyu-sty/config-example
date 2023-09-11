@@ -23,6 +23,7 @@ spec:
           - host: {{ .Values.ingressHostname }}
             paths:
               - path: /
+                pathType: Prefix
         env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
