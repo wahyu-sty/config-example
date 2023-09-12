@@ -24,9 +24,11 @@ spec:
           hosts: 
           - host: {{ .Values.ingressHostname }}
             paths:
-              - path: /flower/
+              - path: /flower
                 pathType: Prefix
         env:
+          - name: FLOWER_URL_PREFIX
+            value: flower
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
           - name: REDIS_URL
