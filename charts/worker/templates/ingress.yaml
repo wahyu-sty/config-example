@@ -57,7 +57,7 @@ spec:
               servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
-          - path: /flower
+          - path: /flower/
             pathType: Prefix
             backend:
               service:
