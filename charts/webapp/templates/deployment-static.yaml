@@ -39,7 +39,7 @@ spec:
             - /bin/sh
             - -c
           args:
-            - django-admin collect-static --noinput
+            - django-admin collectstatic --noinput
           volumeMounts:
             - mountPath: /var/www
               name: public
