@@ -53,13 +53,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          env:
-            {{- toYaml .Values.env | nindent 12 }}
-          command:
-            - /bin/sh
-            - -c
-          args:
-            - uwsgi --ini /etc/inalix/uwsgi.ini
           volumeMounts:
             - mountPath: /usr/share/nginx/html
               name: public
