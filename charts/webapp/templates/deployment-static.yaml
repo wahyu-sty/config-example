@@ -39,6 +39,7 @@ spec:
             - /bin/sh
             - -c
           args:
+            - echo OK /srv/http/index.html
             - django-admin collectstatic --noinput
           volumeMounts:
             - mountPath: /srv/http/
@@ -54,7 +55,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           volumeMounts:
-            - mountPath: /usr/share/nginx/html/staticc
+            - mountPath: /usr/share/nginx/html/
               name: public
           livenessProbe:
             httpGet:
