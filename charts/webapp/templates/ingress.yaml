@@ -57,5 +57,13 @@ spec:
               servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
+          - path: /static
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-static
+                port:
+                  number: 80
+
     {{- end }}
 {{- end }}
