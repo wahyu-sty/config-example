@@ -50,6 +50,13 @@ app.kubernetes.io/name: {{ include "webapp.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+{{- define "webappstatic.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "webapp.name" . }}-static
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+
+
 {{/*
 Create the name of the service account to use
 */}}
