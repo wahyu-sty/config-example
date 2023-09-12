@@ -48,11 +48,11 @@ spec:
             - /usr/local/bin/celery flower -A inalix.base.celery_app
           livenessProbe:
             httpGet:
-              path: /
+              path: /flower/
               port: 5555
           readinessProbe:
             httpGet:
-              path: /
+              path: /flower/
               port: 5555
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
