@@ -54,16 +54,16 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           volumeMounts:
-            - mountPath: /usr/share/nginx/html
+            - mountPath: /usr/share/nginx/html/staticc
               name: public
           livenessProbe:
             httpGet:
               path: /
-              port: 80
+              port: http
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
