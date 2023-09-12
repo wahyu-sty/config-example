@@ -41,7 +41,7 @@ spec:
           args:
             - django-admin collectstatic --noinput
           volumeMounts:
-            - mountPath: /var/www
+            - mountPath: /srv/http/
               name: public
       containers:
         - name: {{ .Chart.Name }}-static
@@ -59,11 +59,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
