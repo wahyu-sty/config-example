@@ -1,10 +1,9 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: strip-prefix
+  name: {{ include "webapp.fullname" . }}-strip-prefix
 spec:
   stripPrefix:
     prefixes:
-      - /flower
       - /help
       - /static

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: devel
+  name: dev
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,7 @@ spec:
     targetRevision: lamongan
     helm:
       values: |
-        ingressHostname:  10-11-1-31.nip.io
+        ingressHostname:  dev.10-11-1-31.nip.io
         targetRevision:  lamongan
   destination:
     namespace: inalix-system

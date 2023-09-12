@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: inalix-system
+  name: aodb
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: charts/inalix-system/
+    path: charts/inalix/
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: lamongan
     helm:
       values: |
-        ingressHostname:  10-11-1-31.nip.io
+        ingressHostname:  aodb-10-11-1-31.nip.io
+        targetRevision:  lamongan
   destination:
     namespace: inalix-system
     server: https://kubernetes.default.svc

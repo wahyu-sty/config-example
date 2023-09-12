@@ -43,9 +43,8 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: strip-prefix-flower@kubernetescrd
   hosts:
     - host: local.gd
       paths:

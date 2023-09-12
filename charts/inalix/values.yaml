@@ -1,0 +1,8 @@
+
+targetRevision: main
+ingressHostname:  local.gd
+systemNamespace:  inalix-system
+appNamespace:  apps
+
+imagePullSecrets:
+  - name: d-inalix-cred

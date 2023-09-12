@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: inalix-system
-  namespace: {{ .Values.systemNamespace }}
+  namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -10,12 +10,12 @@ spec:
   source:
     path: charts/inalix-system/
     repoURL: https://github.com/wahyu-sty/config-example.git
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: lamongan
     helm:
       values: |
-        ingressHostname:  {{ .Values.ingressHostname }}
+        ingressHostname:  admin.10-11-1-31.nip.io
   destination:
-    namespace: {{ .Values.systemNamespace }}
+    namespace: inalix-system
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
