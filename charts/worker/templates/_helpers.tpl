@@ -60,7 +60,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "flower.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "worker.name" . }}
+app.kubernetes.io/name: {{ include "worker.name" . }}-flower
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
