@@ -19,8 +19,6 @@ spec:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
         ingress:
           enabled: true
-          annotations:
-            traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.appNamespace }}-strip-prefix@kubernetescrd
           hosts: 
           - host: {{ .Values.ingressHostname }}
             paths:
