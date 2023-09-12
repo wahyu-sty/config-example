@@ -39,7 +39,7 @@ spec:
             - /bin/sh
             - -c
           args:
-            - echo OK /srv/http/index.html
+            - echo OK > /srv/http/index.html
             - django-admin collectstatic --noinput
           volumeMounts:
             - mountPath: /srv/http/
