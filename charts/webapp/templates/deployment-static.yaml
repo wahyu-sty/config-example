@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: {{ include "webapp.fullname" . }}-static
   labels:
-    {{- include "webapp.labels" . | nindent 4 }}
+    {{- include "webappstatic.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "webapp.selectorLabels" . | nindent 6 }}
+      {{- include "webappstatic.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
