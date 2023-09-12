@@ -64,6 +64,12 @@ spec:
                 name: {{ $fullName }}-static
                 port:
                   number: 80
-
+          - path: /help
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-static
+                port:
+                  number: 80
     {{- end }}
 {{- end }}

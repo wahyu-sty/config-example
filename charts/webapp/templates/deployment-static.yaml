@@ -44,6 +44,20 @@ spec:
           volumeMounts:
             - mountPath: /srv/http/
               name: public
+        - name: {{ .Chart.Name }}-static-help
+          # image: "d.inalix.com/docs:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "d.inalix.com/docs:v3"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            {{- toYaml .Values.env | nindent 12 }}
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - cp -r /www /srv/http/help
+          volumeMounts:
+            - mountPath: /srv/http/
+              name: public
       containers:
         - name: {{ .Chart.Name }}-static
           securityContext:
