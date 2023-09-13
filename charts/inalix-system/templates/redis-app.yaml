@@ -15,7 +15,7 @@ spec:
       version: v3
       parameters:
         - name: auth.enabled
-          value: false
+          value: "false"
         - name: master.persistence.size
           value: 1Gi
         - name: replica.replicaCount
