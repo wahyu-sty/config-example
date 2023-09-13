@@ -13,17 +13,17 @@ spec:
     chart: redis
     helm:
       version: v3
-      values: |
-        auth:
-          enabled: false
-        master:
-          persistence:
-            size: 1Gi
-        replica:
-          replicaCount: 2
-          persistence:
-            size: 1Gi
-        architecture: replication
+      parameters:
+        - name: auth.enabled
+          value: false
+        - name: master.persistence.size
+          value: 1Gi
+        - name: replica.replicaCount
+          value: 2
+        - name: replica.persistence.size
+          value: 1Gi
+        - name: architecture
+          value: replication
 
   destination:
     namespace: {{ .Release.Namespace }}
