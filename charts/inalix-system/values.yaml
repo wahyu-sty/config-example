@@ -1,0 +1,5 @@
+
+syncPolicy:
+  selfHeal: true
+
+ingressHostname: "local.gd"

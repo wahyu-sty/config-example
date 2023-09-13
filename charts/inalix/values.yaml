@@ -1,0 +1,17 @@
+
+
+localAirport:
+  name: Inalix Airport
+  location: Jakarta
+  icao: WINX
+  iata: INX
+
+repoURL: https://github.com/inalix/config-example.git
+targetRevision: main
+ingressHostname: local.gd
+
+systemNamespace: inalix-system
+appNamespace: apps
+
+imagePullSecrets:
+  - name: d-inalix-cred
