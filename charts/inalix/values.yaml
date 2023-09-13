@@ -6,6 +6,7 @@ localAirport:
   icao: WINX
   iata: INX
 
+repoURL: https://github.com/inalix/config-example.git
 targetRevision: main
 ingressHostname: local.gd
 
