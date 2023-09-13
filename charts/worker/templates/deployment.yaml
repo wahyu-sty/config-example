@@ -49,8 +49,8 @@ spec:
             periodSeconds: 20
             exec:
               command:
-                - celery 
-                - -A 
+                - celery
+                - -A
                 - inalix.base.celery_app
                 - inspect
                 - ping

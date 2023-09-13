@@ -19,7 +19,7 @@ spec:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
         ingress:
           enabled: true
-          hosts: 
+          hosts:
           - host: {{ .Values.ingressHostname }}
             paths:
               - path: /help/

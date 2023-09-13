@@ -45,7 +45,7 @@ spec:
             - /bin/sh
             - -c
           args:
-            - /usr/local/bin/celery flower -A inalix.base.celery_app
+            - /usr/local/bin/celery -A inalix.base.celery_app flower
           livenessProbe:
             httpGet:
               path: /flower/
