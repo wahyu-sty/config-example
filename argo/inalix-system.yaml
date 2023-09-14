@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: inalix-system
+  namespace: inalix-system
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: charts/inalix-system/
+    repoURL: https://github.com/wahyu-sty/config-example.git
+    targetRevision: main
+    helm:
+      version: v3
+      values: |
+        ingressHostname: local.gd
+
+  destination:
+    namespace: inalix-system
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
