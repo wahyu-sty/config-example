@@ -46,8 +46,9 @@ ingress:
   hosts:
     - host: local.gd
       paths:
-        - path: /flower
+        - path: /flower/
           pathType: Prefix
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
