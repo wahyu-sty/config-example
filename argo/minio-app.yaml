@@ -10,16 +10,21 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 12.8.1
     chart: minio
     helm:
       version: v3
-      values: |
-        ingress:
-          enabled: true
-          hostname: minio.local.gd
-
-        persistence:
-          size: 1Gi
+      parameters:
+      - name: ingress.enabled
+        value: 'true'
+      - name: ingress.hostname
+        value: minio.10-11-1-31.nip.io
+      - name: persistence.size
+        value: 1Gi
+      - name: defaultBuckets
+        value: "media, backup"
+      - name: auth.rootUser
+        value: inalix-admin
 
   destination:
     namespace: inalix-system
