@@ -31,29 +31,32 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
+              containerPort: 5555
               protocol: TCP
           env:
+            - name: FLOWER_URL_PREFIX
+              value: flower
+            {{- if .Values.env }}
             {{- toYaml .Values.env | nindent 12 }}
+            {{- end }}
           command:
             - /bin/sh
             - -c
           args:
-            - django-admin run_default_worker
+            - /usr/local/bin/celery -A inalix.base.celery_app flower
+          livenessProbe:
+            httpGet:
+              path: /flower/
+              port: 5555
           readinessProbe:
-            timeoutSeconds: 10
-            periodSeconds: 20
-            exec:
-              command:
-                - celery
-                - -A
-                - inalix.base.celery_app
-                - inspect
-                - ping
+            httpGet:
+              path: /flower/
+              port: 5555
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

@@ -23,10 +23,6 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
-{{- define "flower.fullname" -}}
-{{ include"worker.fullname" -}}-flower
-{{- end }}
-
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -46,9 +42,9 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
-{{- define "flower.labels" -}}
+{{- define "workers.labels" -}}
 helm.sh/chart: {{ include "worker.chart" . }}
-{{ include "flower.selectorLabels" . }}
+{{ include "workers.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -63,8 +59,8 @@ app.kubernetes.io/name: {{ include "worker.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "flower.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "worker.name" . }}-flower
+{{- define "workers.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "worker.name" . }}-worker
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 

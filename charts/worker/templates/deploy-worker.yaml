@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "worker.fullname" . }}-flower
+  name: {{ include "worker.fullname" . }}
   labels:
-    {{- include "flower.labels" . | nindent 4 }}
+    {{- include "workers.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "flower.selectorLabels" . | nindent 6 }}
+      {{- include "worker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "flower.selectorLabels" . | nindent 8 }}
+        {{- include "worker.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -28,32 +28,32 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}-flower
+        - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 5555
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-            - name: FLOWER_URL_PREFIX
-              value: flower
             {{- toYaml .Values.env | nindent 12 }}
           command:
             - /bin/sh
             - -c
           args:
-            - /usr/local/bin/celery -A inalix.base.celery_app flower
-          livenessProbe:
-            httpGet:
-              path: /flower/
-              port: 5555
+            - django-admin run_default_worker
           readinessProbe:
-            httpGet:
-              path: /flower/
-              port: 5555
+            timeoutSeconds: 10
+            periodSeconds: 20
+            exec:
+              command:
+                - celery
+                - -A
+                - inalix.base.celery_app
+                - inspect
+                - ping
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
