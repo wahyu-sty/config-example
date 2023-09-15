@@ -23,6 +23,10 @@ spec:
           value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
         - name: env.REDIS_URL
           value: redis://redis-master.inalix-system/1 # jb0d8AXz9S
+        - name: ingress.hosts[0].paths[0].path
+          value: /flower/
+        - name: ingress.hosts[0].paths[0].pathType
+          value: Prefix
       values: |
         imagePullSecrets:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
