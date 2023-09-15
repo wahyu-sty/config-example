@@ -2,5 +2,8 @@ dependencies:
 - name: pgadmin4
   repository: https://helm.runix.net/
   version: 1.17.3
-digest: sha256:08e5620d7acd263f276602aedbb6f901b7963f24e06758ff3c6430ce52f30fd7
-generated: "2023-09-15T10:51:32.409239111+07:00"
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 18.0.4
+digest: sha256:cea5c485e342df150466ea2ec4d095e272ca78a66df69e960520cedc804c2591
+generated: "2023-09-15T16:39:50.263166755+07:00"
