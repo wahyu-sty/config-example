@@ -10,7 +10,7 @@ spec:
   source:
     path: charts/inalix-system/
     repoURL: https://github.com/wahyu-sty/config-example.git
-    targetRevision: lamongan
+    targetRevision: test
     helm:
       values: |
         ingressHostname:  admin.10-11-1-31.nip.io

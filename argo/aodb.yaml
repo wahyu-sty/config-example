@@ -19,6 +19,8 @@ spec:
           value: bebas.10-11-1-31.nip.io
         - name: targetRevision
           value: test
+        - name: env.REDIS_URL
+          value: redis://inalix-system-redis-master.inalix-system/1
   destination:
     namespace: bebas
     server: https://kubernetes.default.svc
