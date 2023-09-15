@@ -36,7 +36,6 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
-              containerPort: 5555
               protocol: TCP
           env:
             - name: FLOWER_URL_PREFIX
