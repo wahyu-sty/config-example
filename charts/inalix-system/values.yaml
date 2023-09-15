@@ -3,3 +3,14 @@ syncPolicy:
   selfHeal: true
 
 ingressHostname: "local.gd"
+
+pgadmin4:
+  enabled: true
+  ingress:
+    enabled: true
+    hosts:
+      - host: pgadmin.local.gd
+        paths:
+          - path: /
+            pathType: Prefix
+

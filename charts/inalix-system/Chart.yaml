@@ -2,4 +2,9 @@ apiVersion: v2
 name: inalix-system
 description: Inalix base system database, cache, secret etc
 type: application
-version: 0.1.0
+version: 0.1.1
+dependencies:
+  - condition: pgadmin4.enabled
+    name: pgadmin4
+    repository: https://helm.runix.net/
+    version: 1.17.3
