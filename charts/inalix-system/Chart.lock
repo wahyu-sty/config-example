@@ -8,5 +8,8 @@ dependencies:
 - name: cloudnative-pg
   repository: https://cloudnative-pg.github.io/charts
   version: 0.18.2
-digest: sha256:2baca65aeb842dba7dba69cff352fd7510e7dd71797fc4236157ea657db6124b
-generated: "2023-09-15T17:10:02.97544974+07:00"
+- name: minio
+  repository: https://charts.bitnami.com/bitnami
+  version: 12.8.4
+digest: sha256:e1d67ca049a06bea84bd5c81ce023b24dd69c7ee462130e1771ab3e9df57a801
+generated: "2023-09-15T19:22:02.984541993+07:00"
