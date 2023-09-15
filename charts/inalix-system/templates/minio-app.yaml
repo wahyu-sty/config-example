@@ -14,8 +14,6 @@ spec:
     helm:
       version: v3
       parameters:
-      - name: mode
-        value: distributed
       - name: ingress.enabled
         value: "true"
       - name: ingress.hostname
