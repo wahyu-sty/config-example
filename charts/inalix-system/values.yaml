@@ -25,3 +25,7 @@ redis:
   replica:
     persistence:
       size: 1Gi
+
+cloudnative-pg:
+  enabled: true
+  replicaCount: 1

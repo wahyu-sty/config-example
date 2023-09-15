@@ -5,5 +5,8 @@ dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 18.0.4
-digest: sha256:cea5c485e342df150466ea2ec4d095e272ca78a66df69e960520cedc804c2591
-generated: "2023-09-15T16:39:50.263166755+07:00"
+- name: cloudnative-pg
+  repository: https://cloudnative-pg.github.io/charts
+  version: 0.18.2
+digest: sha256:2baca65aeb842dba7dba69cff352fd7510e7dd71797fc4236157ea657db6124b
+generated: "2023-09-15T17:10:02.97544974+07:00"
