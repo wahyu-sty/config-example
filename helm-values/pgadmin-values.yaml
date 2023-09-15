@@ -1,0 +1,7 @@
+ingress:
+  enabled: true
+  hosts:
+    - host: pgadmin.10-11-1-31.nip.io
+      paths:
+        - path: /
+          pathType: Prefix

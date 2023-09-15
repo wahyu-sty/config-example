@@ -14,3 +14,14 @@ pgadmin4:
           - path: /
             pathType: Prefix
 
+redis:
+  enabled: true
+  architecture: replication
+  auth:
+    enabled: false
+  master:
+    persistence:
+      size: 1Gi
+  replica:
+    persistence:
+      size: 1Gi

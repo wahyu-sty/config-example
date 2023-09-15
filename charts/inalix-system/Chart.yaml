@@ -8,3 +8,7 @@ dependencies:
     name: pgadmin4
     repository: https://helm.runix.net/
     version: 1.17.3
+  - condition: redis.enabled
+    name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 18.0.4

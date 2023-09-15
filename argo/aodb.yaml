@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aodb
+  name: bebas
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,17 +10,17 @@ spec:
   source:
     path: charts/inalix/
     repoURL: https://github.com/wahyu-sty/config-example.git
-    targetRevision: lamongan
+    targetRevision: test
     helm:
       parameters:
         - name: repoURL
           value: https://github.com/wahyu-sty/config-example.git
         - name: ingressHostname
-          value: aodb-10-11-1-31.nip.io
+          value: bebas.10-11-1-31.nip.io
         - name: targetRevision
-          value: lamongan
+          value: test
   destination:
-    namespace: inalix-system
+    namespace: bebas
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
