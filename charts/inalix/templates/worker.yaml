@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ include "inalix.fullname" . }}-worker
-  namespace: {{ .Values.systemNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -27,7 +26,6 @@ spec:
           - name: REDIS_URL
             value: redis://redis-master.inalix-system/1 # jb0d8AXz9S
   destination:
-    namespace: {{ .Values.appNamespace }}
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
