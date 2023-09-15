@@ -2,9 +2,4 @@ apiVersion: v2
 name: inalix
 description: Learn helm dev
 type: application
-version: 0.1.1
-dependencies:
-- condition: redis.enabled
-  repository: https://charts.bitnami.com/bitnami
-  name: redis
-  version: 18.0.4
+version: 0.1.2

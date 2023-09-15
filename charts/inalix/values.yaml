@@ -16,15 +16,3 @@ appNamespace: apps
 imagePullSecrets:
   - name: d-inalix-cred
 
-redis:
-  enabled: true
-  architecture: replication
-  auth:
-    enabled: false
-  master:
-    persistence:
-      size: 1Gi
-  replica:
-    replicaCount: 2
-    persistence:
-      size: 1Gi
