@@ -30,6 +30,7 @@ spec:
           - name: REDIS_URL
             value: redis://redis-master.inalix-system/1 # jb0d8AXz9S
   destination:
+    namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
