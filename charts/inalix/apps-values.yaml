@@ -5,13 +5,7 @@ global:
   - name: REDIS_URL
     value: redis://inalix-system-redis-master.inalix-system/1
 ingressHotsname: test.10-11-1-31.nip.io
-worker:
-  enabled: true
-  env:
-  - name: DATABASE_URL
-    value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
-  - name: REDIS_URL
-    value: redis://inalix-system-redis-master.inalix-system/1
+
 webapp:
   enabled: true
   ingress:
@@ -22,9 +16,18 @@ webapp:
     value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
   - name: REDIS_URL
     value: redis://inalix-system-redis-master.inalix-system/1
+
 daphne:
   enabled: true
   ingressHotsname: test.10-11-1-31.nip.io
+  env:
+  - name: DATABASE_URL
+    value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+  - name: REDIS_URL
+    value: redis://inalix-system-redis-master.inalix-system/1
+
+worker:
+  enabled: true
   env:
   - name: DATABASE_URL
     value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
