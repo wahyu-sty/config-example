@@ -6,7 +6,7 @@ global:
     value: redis://inalix-system-redis-master.inalix-system/1
 ingressHotsname: test.10-11-1-31.nip.io
 worker:
-  enabled: false
+  enabled: true
   env:
   - name: DATABASE_URL
     value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
@@ -15,6 +15,7 @@ worker:
 webapp:
   enabled: true
   ingress:
+    enabled: true
     hotsname: test.10-11-1-31.nip.io
   env:
   - name: DATABASE_URL

@@ -57,12 +57,5 @@ spec:
               servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
-          - path: /flower/
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $fullName }}-flower
-                port:
-                  number: 80
     {{- end }}
 {{- end }}

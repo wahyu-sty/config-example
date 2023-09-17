@@ -9,7 +9,7 @@ pgadmin4:
   ingress:
     enabled: true
     hosts:
-      - host: pgadmin.local.gd
+      - host: pg.admin.local.gd
         paths:
           - path: /
             pathType: Prefix
@@ -33,7 +33,7 @@ cloudnative-pg:
 minio:
   enabled: false
   ingress:
-    hostname: minio-fs.admin.10-11-1-31.nip.io
+    hostname: fs.admin.local.gd
   persistence:
     size: 1Gi
   defaultBuckets: "media, backup, static"
