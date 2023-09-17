@@ -8,3 +8,15 @@ dependencies:
     name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 18.0.4
+  - condition: webapp.enabled
+    name: webapp
+    repository: https://charts.inalix.com/
+    version: 0.1.0
+#  - condition: worker.enabled
+#    name: worker
+#    repository: https://charts.inalix.com/
+#    version: 0.1.0
+#  - condition: daphne.enabled
+#    name: daphne
+#    repository: https://charts.inalix.com/
+#    version: 0.1.0

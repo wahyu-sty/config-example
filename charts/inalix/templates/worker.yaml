@@ -21,11 +21,15 @@ spec:
           enabled: true
           hosts:
           - host: {{ .Values.ingressHostname }}
+        {{- if .Values.env }}
         env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          {{- if .Values.env.REDIS_URL }}
           - name: REDIS_URL
             value: {{ .Values.env.REDIS_URL }}
+          {{- end }}
+        {{- end }}
   destination:
     namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc

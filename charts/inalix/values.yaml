@@ -1,5 +1,4 @@
 
-
 localAirport:
   name: Inalix Airport
   location: Jakarta
@@ -27,3 +26,16 @@ redis:
   replica:
     persistence:
       size: 1Gi
+
+webapp:
+  image:
+    tag: v3-new
+  ingress:
+    enabled: true
+    hosts:
+    - host: local.gd
+      paths:
+        - path: /
+          pathType: Prefix
+
+env: {}
