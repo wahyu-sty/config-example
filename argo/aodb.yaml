@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bebas
+  name: test
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,13 +16,15 @@ spec:
         - name: repoURL
           value: https://github.com/wahyu-sty/config-example.git
         - name: ingressHostname
-          value: bebas.10-11-1-31.nip.io
+          value: test.10-11-1-31.nip.io
         - name: targetRevision
           value: test
         - name: env.REDIS_URL
           value: redis://inalix-system-redis-master.inalix-system/1
+        - name: worker.enabled
+          value: 'true'
   destination:
-    namespace: bebas
+    namespace: test
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:

@@ -12,8 +12,22 @@ spec:
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: test
     helm:
+      parameters:
+        - name: minio.ingress.hostname
+          value: fs.admin.10-11-1-31.nip.io
       values: |
         ingressHostname:  admin.10-11-1-31.nip.io
+        minio:
+          enabled: true
+          ingress:
+            enabled: true
+        pgadmin4:
+          ingress:
+            hosts:
+              - host: pg.admin.10-11-1-31.nip.io
+                paths:
+                  - path: /
+                    pathType: Prefix
   destination:
     namespace: inalix-system
     server: https://kubernetes.default.svc
