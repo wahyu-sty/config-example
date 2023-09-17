@@ -19,4 +19,4 @@ dependencies:
   - condition: daphne.enabled
     name: daphne
     repository: https://charts.inalix.com/
-    version: 0.1.0
+    version: 0.1.1
