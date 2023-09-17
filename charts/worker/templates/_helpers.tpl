@@ -42,9 +42,9 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
-{{- define "workers.labels" -}}
+{{- define "flower.labels" -}}
 helm.sh/chart: {{ include "worker.chart" . }}
-{{ include "workers.selectorLabels" . }}
+{{ include "flower.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -59,8 +59,8 @@ app.kubernetes.io/name: {{ include "worker.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "workers.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "worker.name" . }}-worker
+{{- define "flower.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "worker.name" . }}-flower
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 

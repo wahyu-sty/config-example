@@ -2,5 +2,14 @@ dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 18.0.4
-digest: sha256:f77b5d23021653f723a313403982e03276d4eb26bafae94455998922cd9fe66b
-generated: "2023-09-15T11:33:13.34713568+07:00"
+- name: webapp
+  repository: https://charts.inalix.com/
+  version: 0.1.0
+- name: worker
+  repository: https://charts.inalix.com/
+  version: 0.1.0
+- name: daphne
+  repository: https://charts.inalix.com/
+  version: 0.1.0
+digest: sha256:eb7c6139d5a06c8f0763987f49a56d2b15ca460921b7139750f5bbf35bb87a7e
+generated: "2023-09-16T14:25:59.453484104+07:00"

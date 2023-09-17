@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aodb
+  name: main
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,11 +16,11 @@ spec:
         - name: repoURL
           value: https://github.com/wahyu-sty/config-example.git
         - name: ingressHostname
-          value: aodb-10-11-1-31.nip.io
+          value: main-10-11-1-31.nip.io
         - name: targetRevision
           value: main
   destination:
-    namespace: inalix-system
+    namespace: main
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:

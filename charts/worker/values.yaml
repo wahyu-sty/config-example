@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: d.inalix.com/core
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v3-new"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,16 +38,15 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 5555
+  port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
-  annotations: {}
   hosts:
     - host: local.gd
       paths:
-        - path: /flower/
+        - path: /flower
           pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
@@ -78,3 +77,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env: {}

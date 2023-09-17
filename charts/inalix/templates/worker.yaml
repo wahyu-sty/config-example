@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ include "inalix.fullname" . }}-worker
-  namespace: {{ .Values.systemNamespace }}
+  namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,26 +12,26 @@ spec:
     repoURL: {{ .Values.repoURL }}
     targetRevision: {{ .Values.targetRevision }}
     helm:
-      parameters:
-        - name: image.tag
-          value: v3-new
-        - name: ingress.enabled
-          value: 'true'
-        - name: ingress.hosts[0].host
-          value: {{ .Values.ingressHostname }}
-        - name: env.DATABASE_URL
-          value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
-        - name: env.REDIS_URL
-          value: redis://redis-master.inalix-system/1 # jb0d8AXz9S
-        - name: ingress.hosts[0].paths[0].path
-          value: /flower/
-        - name: ingress.hosts[0].paths[0].pathType
-          value: Prefix
       values: |
+        image:
+          tag: v3-new
         imagePullSecrets:
           {{- toYaml .Values.imagePullSecrets | nindent 10 }}
+        ingress:
+          enabled: true
+          hosts:
+          - host: {{ .Values.ingressHostname }}
+        {{- if .Values.env }}
+        env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          {{- if .Values.env.REDIS_URL }}
+          - name: REDIS_URL
+            value: {{ .Values.env.REDIS_URL }}
+          {{- end }}
+        {{- end }}
   destination:
-    namespace: {{ .Values.appNamespace }}
+    namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:

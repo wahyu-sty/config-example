@@ -40,8 +40,7 @@ spec:
             - -c
           args:
             - echo OK > /srv/http/index.html &&
-              django-admin collectstatic --noinput &&
-              touch /srv/http/static/index.html
+              django-admin collectstatic --noinput
           volumeMounts:
             - mountPath: /srv/http/
               name: public

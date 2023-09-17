@@ -14,3 +14,26 @@ pgadmin4:
           - path: /
             pathType: Prefix
 
+redis:
+  enabled: true
+  architecture: replication
+  auth:
+    enabled: false
+  master:
+    persistence:
+      size: 1Gi
+  replica:
+    persistence:
+      size: 1Gi
+
+cloudnative-pg:
+  enabled: true
+  replicaCount: 1
+
+minio:
+  enabled: false
+  ingress:
+    hostname: minio-fs.admin.10-11-1-31.nip.io
+  persistence:
+    size: 1Gi
+  defaultBuckets: "media, backup, static"
