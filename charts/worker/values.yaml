@@ -43,11 +43,7 @@ service:
 ingress:
   enabled: true
   className: ""
-  hosts:
-    - host: local.gd
-      paths:
-        - path: /flower/
-          pathType: Prefix
+  hostname: local.gd
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

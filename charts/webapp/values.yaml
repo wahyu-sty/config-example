@@ -41,12 +41,12 @@ service:
 ingress:
   enabled: false
   className: ""
-  hostname: "local.gd"
+  hostname: "local.gdx"
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: "local.gd"
+    - host: "local.com"
       paths:
         - path: /
           pathType: Prefix
