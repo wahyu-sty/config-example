@@ -28,6 +28,7 @@ redis:
       size: 1Gi
 
 webapp:
+  enabled: false
   image:
     tag: v3-new
   ingress:
@@ -37,5 +38,8 @@ webapp:
       paths:
         - path: /
           pathType: Prefix
+
+worker:
+  enabled: true
 
 env: {}
