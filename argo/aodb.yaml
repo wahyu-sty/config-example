@@ -12,17 +12,48 @@ spec:
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: test
     helm:
+      version: v3
+      values: |
+        global:
+          env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          - name: REDIS_URL
+            value: redis://inalix-system-redis-master.inalix-system/1
+        ingressHotsname: test.10-11-1-31.nip.io
+        worker:
+          enabled: true
+          ingress:
+            hostname: worker.test.10-11-1-31.nip.io
+          env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          - name: REDIS_URL
+            value: redis://inalix-system-redis-master.inalix-system/1
+        webapp:
+          enabled: true
+          ingress:
+            hostname: webapp.test.10-11-1-31.nip.io
+          env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          - name: REDIS_URL
+            value: redis://inalix-system-redis-master.inalix-system/1
+        daphne:
+          enabled: true
+          ingressHotsname: test.10-11-1-31.nip.io
+          env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
+          - name: REDIS_URL
+            value: redis://inalix-system-redis-master.inalix-system/1
       parameters:
         - name: repoURL
           value: https://github.com/wahyu-sty/config-example.git
-        - name: ingressHostname
+        - name: ingresssHostname
           value: test.10-11-1-31.nip.io
         - name: targetRevision
           value: test
-        - name: env.REDIS_URL
-          value: redis://inalix-system-redis-master.inalix-system/1
-        - name: worker.enabled
-          value: 'true'
   destination:
     namespace: test
     server: https://kubernetes.default.svc

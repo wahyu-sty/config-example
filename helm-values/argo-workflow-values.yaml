@@ -1,0 +1,4 @@
+ingress:
+  enabled: true
+  hostname: workflow.10-11-1-31.nip.io
+
