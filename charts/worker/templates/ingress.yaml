@@ -40,7 +40,7 @@ spec:
     - host: {{ .Values.ingress.hostname }}
       http:
         paths:
-          - path: /flower
+          - path: /flower/
             pathType: Prefix
             backend:
               service:
