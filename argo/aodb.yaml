@@ -24,7 +24,7 @@ spec:
         worker:
           enabled: true
           ingress:
-            hostname: worker.test.10-11-1-31.nip.io
+            hostname: test.10-11-1-31.nip.io
           env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
@@ -33,7 +33,7 @@ spec:
         webapp:
           enabled: true
           ingress:
-            hostname: webapp.test.10-11-1-31.nip.io
+            hostname: test.10-11-1-31.nip.io
           env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
@@ -41,7 +41,7 @@ spec:
             value: redis://inalix-system-redis-master.inalix-system/1
         daphne:
           enabled: true
-          ingressHotsname: test.10-11-1-31.nip.io
+          ingressHotsname: aodb.10-11-1-31.nip.io
           env:
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
