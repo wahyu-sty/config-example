@@ -32,8 +32,18 @@ cloudnative-pg:
 
 minio:
   enabled: false
+  mode: distributed
+
   ingress:
+    enabled: true
     hostname: fs.admin.local.gd
+
   persistence:
     size: 1Gi
+
   defaultBuckets: "media, backup, static"
+
+  statefulset:
+    replicaCount: 2
+    zones: 2
+    drivesPerNode: 2
