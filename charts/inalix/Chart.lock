@@ -7,9 +7,9 @@ dependencies:
   version: 0.1.0
 - name: worker
   repository: https://charts.inalix.com/
-  version: 0.1.0
+  version: 0.1.1
 - name: daphne
   repository: https://charts.inalix.com/
-  version: 0.1.0
-digest: sha256:eb7c6139d5a06c8f0763987f49a56d2b15ca460921b7139750f5bbf35bb87a7e
-generated: "2023-09-16T14:25:59.453484104+07:00"
+  version: 0.1.1
+digest: sha256:0eb942d286c892aae56d6df6c479ae2714db6b7acd02096756a8a7fc66c1372e
+generated: "2023-09-18T04:27:36.667596275+07:00"

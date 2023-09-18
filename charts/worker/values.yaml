@@ -5,12 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: nginx
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v3-new"
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: d-inalix-cred
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -43,11 +43,7 @@ service:
 ingress:
   enabled: true
   className: ""
-  hosts:
-    - host: local.gd
-      paths:
-        - path: /flower
-          pathType: Prefix
+  hostname: local.gd
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
