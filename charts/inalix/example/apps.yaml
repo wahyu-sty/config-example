@@ -17,11 +17,11 @@ spec:
         - name: webapp.ingress.hosts[0].host
           value: 10-11-1-31.nip.io
       valueFiles:
-        - apps-values.yaml
+        - example/apps-values.yaml
   destination:
     namespace: apps
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
-      selfHeal: true
+      selfHeal: false
       prune: true

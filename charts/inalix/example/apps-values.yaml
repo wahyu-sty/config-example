@@ -11,7 +11,7 @@ webapp:
   enabled: true
   ingress:
     enabled: true
-    hostname: test.10-11-1-31.nip.io
+    hostname: webapp.10-11-1-31.nip.io
   env:
   - name: DATABASE_URL
     value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
@@ -30,7 +30,7 @@ daphne:
 worker:
   enabled: true
   ingress:
-    hostname: test.10-11-1-31.nip.io
+    hostname: worker.10-11-1-31.nip.io
   env:
   - name: DATABASE_URL
     value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
