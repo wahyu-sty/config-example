@@ -52,7 +52,13 @@ spec:
               protocol: TCP
               containerPort: 8000
           env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            {{- if .Values.env }}
             {{- toYaml .Values.env | nindent 12 }}
+            {{- end }}
           command:
             - /bin/sh
             - -c
