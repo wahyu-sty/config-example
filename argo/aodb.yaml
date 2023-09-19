@@ -35,6 +35,10 @@ spec:
           ingress:
             hostname: test.10-11-1-31.nip.io
           env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
           - name: DATABASE_URL
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
           - name: REDIS_URL
