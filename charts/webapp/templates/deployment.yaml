@@ -27,6 +27,10 @@ spec:
       serviceAccountName: {{ include "webapp.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: config
+          configMap:
+            name: inalix-config
       initContainers:
         - name: {{ .Chart.Name }}-init
           securityContext:
@@ -52,12 +56,21 @@ spec:
               protocol: TCP
               containerPort: 8000
           env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            {{- if .Values.env }}
             {{- toYaml .Values.env | nindent 12 }}
+            {{- end }}
           command:
             - /bin/sh
             - -c
           args:
             - uwsgi --ini /etc/inalix/uwsgi.ini
+          volumeMounts:
+            - name: config
+              mountPath: /etc/inalix/
           livenessProbe:
             httpGet:
               path: /
