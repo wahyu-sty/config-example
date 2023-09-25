@@ -51,13 +51,6 @@ spec:
             value: postgres://inalix:password@pgc-inalix-rw.inalix-system/inalix
           - name: REDIS_URL
             value: redis://inalix-system-redis-master.inalix-system/1
-      parameters:
-        - name: repoURL
-          value: https://github.com/wahyu-sty/config-example.git
-        - name: ingresssHostname
-          value: test.10-11-1-31.nip.io
-        - name: targetRevision
-          value: test
   destination:
     namespace: test
     server: https://kubernetes.default.svc

@@ -12,15 +12,44 @@ spec:
     repoURL: https://github.com/wahyu-sty/config-example.git
     targetRevision: test
     helm:
-      parameters:
-        - name: minio.ingress.hostname
-          value: fs.admin.10-11-1-31.nip.io
       values: |
         ingressHostname:  admin.10-11-1-31.nip.io
+
+        ingress:
+          enabled: false
+
         minio:
+          mode: standalone
           enabled: true
+
+          auth:
+            rootUser: admin
+            rootPassword: inalixOK
+
           ingress:
             enabled: true
+            hostname: fs.admin.10-11-1-31.nip.io
+          apiIngress:
+            enabled: true
+            hostname: media.10-11-1-31.nip.io
+
+          users:
+            - username: test-user
+              password: test-password
+              prolicies:
+                - readwrite
+
+          provisioning:
+            buckets:
+              - name: test1
+              - name: test2
+
+          extraEnvVars:
+            - name: MINIO_ACCESS_KEY
+              value: minio
+            - name: MINIO_SECRET_KEY
+              value: minio123
+
         pgadmin4:
           ingress:
             hosts:

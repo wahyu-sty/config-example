@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pgc-2
+  name: pgc-test
 spec:
   instances: 3
   storage:
@@ -11,6 +11,8 @@ spec:
   superuserSecret:
     name: superuser-secret
 
+  primaryUpdateStrategy: unsupervised
+
   bootstrap:
     initdb:
       database: inalix
@@ -18,13 +20,33 @@ spec:
       secret:
         name: inalix-secret
 
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://backup/postgresql/"
+      endpointURL: http://inalix-system-minio.inalix-system.svc.cluster.local:9000
+      s3Credentials:
+        accessKeyId:
+          name: minio-credentials
+          key: ACCESS_KEY
+        secretAccessKey:
+          name: minio-credentials
+          key: SECRET_KEY
+
 #   monitoring:
 #     enablePodMonitor: true
 
+  managed:
+    roles:
+      - name: user1
+        comment: New user manager by ..
+        login: true
+        superuser: false
+        passwordSecret:
+          name: postgres-user1-pass
 ---
 apiVersion: v1
 data:
-  username: aW5hbGl4Cg==
+  username: aW5hbGl4
   password: cGFzc3dvcmQ=
 kind: Secret
 metadata:
@@ -35,7 +57,7 @@ type: kubernetes.io/basic-auth
 ---
 apiVersion: v1
 data:
-  username: cGFzc3dvcmQ=
+  username: cG9zdGdyZXM=
   password: cGFzc3dvcmQ=
 kind: Secret
 metadata:

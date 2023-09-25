@@ -66,8 +66,8 @@ spec:
           command:
             - /bin/sh
             - -c
-          args:
-            - uwsgi --ini /etc/inalix/uwsgi.ini
+            - |
+              uwsgi --ini /etc/inalix/uwsgi.ini
           volumeMounts:
             - name: config
               mountPath: /etc/inalix/
