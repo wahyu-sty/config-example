@@ -4,6 +4,11 @@
 
 replicaCount: 1
 
+inalixSecret: inalix-secret
+inalixConfig: inalix-config
+inalixEnv: inalix-env
+
+imagePullSecrets: []
 image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
