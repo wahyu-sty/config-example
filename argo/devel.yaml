@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: devel2
+  name: dev
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -18,6 +18,10 @@ spec:
 
         webapp:
           enabled: true
+          imagePullSecrets:
+            - name: d-inalix-cred
+          image:
+            pullPolicy: Always
           ingress:
             enabled: true
             hostname: devel.10-11-1-31.nip.io
@@ -29,23 +33,29 @@ spec:
           - name: MINIO_URL
             value: http://inalix-system-minio.inalix-system.svc.cluster.local:9000
         daphne:
-          enabled: true
-          env:
-          - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/devel2
-          - name: REDIS_URL
-            value: redis://inalix-system-redis-master.inalix-system/1
-
-        worker:
+          imagePullSecrets:
+            - name: d-inalix-cred
           enabled: true
           ingress:
-            enabled: false
+            enabled: true
             hostname: devel.10-11-1-31.nip.io
           env:
           - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-inalix-rw.inalix-system/devel2
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system.svc.cluster.local/devel2
           - name: REDIS_URL
-            value: redis://inalix-system-redis-master.inalix-system/1
+            value: redis://inalix-system-redis-master.inalix-system.svc.cluster.local/1
+        worker:
+          imagePullSecrets:
+            - name: d-inalix-cred
+          enabled: true
+          ingress:
+            enabled: true
+            hostname: devel.10-11-1-31.nip.io
+          env:
+          - name: DATABASE_URL
+            value: postgres://inalix:password@pgc-inalix-rw.inalix-system.svc.cluster.local/devel2
+          - name: REDIS_URL
+            value: redis://inalix-system-redis-master.inalix-system.svc.cluster.local/1
   destination:
     namespace: devel
     server: https://kubernetes.default.svc
