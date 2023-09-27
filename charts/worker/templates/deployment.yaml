@@ -37,10 +37,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          env:
-            {{- with .Values.env }}
-            {{- toYaml . | nindent 12 }}
-            {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.inalixSecret }}
+            - configMapRef:
+                name: {{ .Values.inalixEnv }}
           command:
             - /bin/sh
             - -c

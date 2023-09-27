@@ -37,12 +37,14 @@ spec:
             - name: http
               containerPort: 5555
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: {{ .Values.inalixSecret }}
+            - configMapRef:
+                name: {{ .Values.inalixEnv }}
           env:
             - name: FLOWER_URL_PREFIX
               value: flower
-            {{- with .Values.env }}
-            {{- toYaml . | nindent 12 }}
-            {{- end }}
           command:
             - /bin/sh
             - -c

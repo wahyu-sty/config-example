@@ -4,6 +4,10 @@ syncPolicy:
 
 ingressHostname: "local.gd"
 
+ingress:
+  enabled: true
+  hostname: traefik.admin.local.gd
+
 pgadmin4:
   enabled: true
   ingress:

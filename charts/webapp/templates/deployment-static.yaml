@@ -33,14 +33,18 @@ spec:
         - name: {{ .Chart.Name }}-static-init
           image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            {{- toYaml .Values.env | nindent 12 }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.inalixSecret }}
+            - configMapRef:
+                name: {{ .Values.inalixEnv }}
           command:
             - /bin/sh
             - -c
-          args:
-            - echo OK > /srv/http/index.html &&
+            - |
+              echo OK > /srv/http/index.html
               django-admin collectstatic --noinput
+              echo OK > /srv/http/static/index.html
           volumeMounts:
             - mountPath: /srv/http/
               name: public
@@ -48,13 +52,11 @@ spec:
           # image: "d.inalix.com/docs:{{ .Values.image.tag | default .Chart.AppVersion }}"
           image: "d.inalix.com/docs:v3"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            {{- toYaml .Values.env | nindent 12 }}
           command:
             - /bin/sh
             - -c
-          args:
-            - cp -r /www /srv/http/help
+            - |
+              cp -r /www /srv/http/help
           volumeMounts:
             - mountPath: /srv/http/
               name: public

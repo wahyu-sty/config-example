@@ -4,6 +4,10 @@
 
 replicaCount: 1
 
+inalixSecret: inalix-secret
+inalixConfig: inalix-config
+inalixEnv: inalix-env
+
 image:
   pullPolicy: IfNotPresent
   tag: "v3-new"

@@ -1,6 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "daphne.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
+{{- $fullName := include "inalix-system.fullname" . -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
@@ -17,11 +16,10 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "daphne.labels" . | nindent 4 }}
+    {{- include "inalix-system.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
-    traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.appNamespace }}-daphne-strip-prefix@kubernetescrd
   {{- end }}
 spec:
   {{- if and .Values.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
@@ -38,14 +36,12 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    - host: {{ .Values.ingress.hostname }}
+    - host: {{ .Values.ingress.hostname | quote }}
       http:
         paths:
-          - path: /ws/
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}
-                port:
-                  number: 80
+                name: traefik.kube-system
 {{- end }}
