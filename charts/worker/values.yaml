@@ -15,6 +15,29 @@ image:
 imagePullSecrets:
   - name: d-inalix-cred
 
+workers:
+  - name: default
+    enabled: true
+    replicas: 1
+    concurency: 1
+  - name: output_normal
+    enabled: true
+    replicas: 1
+    concurency: 1
+  - name: output_high
+    enabled: true
+    replicas: 1
+    concurency: 1
+
+aasPlayer:
+  enabled: false
+
+bhsServer:
+  enabled: false
+
+inxSync:
+  enabled: false
+
 nameOverride: ""
 fullnameOverride: ""
 

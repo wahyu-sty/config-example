@@ -18,6 +18,7 @@ spec:
 
         webapp:
           enabled: true
+          replicaCount: 2
           imagePullSecrets:
             - name: d-inalix-cred
           image:
@@ -25,13 +26,6 @@ spec:
           ingress:
             enabled: true
             hostname: devel.10-11-1-31.nip.io
-          env:
-          - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-inalix-rw.inalix-system.svc.cluster.local/devel2
-          - name: REDIS_URL
-            value: redis://inalix-system-redis-master.inalix-system.svc.cluster.local/1
-          - name: MINIO_URL
-            value: http://inalix-system-minio.inalix-system.svc.cluster.local:9000
         daphne:
           imagePullSecrets:
             - name: d-inalix-cred
@@ -39,11 +33,6 @@ spec:
           ingress:
             enabled: true
             hostname: devel.10-11-1-31.nip.io
-          env:
-          - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-inalix-rw.inalix-system.svc.cluster.local/devel2
-          - name: REDIS_URL
-            value: redis://inalix-system-redis-master.inalix-system.svc.cluster.local/1
         worker:
           imagePullSecrets:
             - name: d-inalix-cred
@@ -51,11 +40,6 @@ spec:
           ingress:
             enabled: true
             hostname: devel.10-11-1-31.nip.io
-          env:
-          - name: DATABASE_URL
-            value: postgres://inalix:password@pgc-inalix-rw.inalix-system.svc.cluster.local/devel2
-          - name: REDIS_URL
-            value: redis://inalix-system-redis-master.inalix-system.svc.cluster.local/1
   destination:
     namespace: devel
     server: https://kubernetes.default.svc
