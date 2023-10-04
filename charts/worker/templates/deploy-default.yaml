@@ -44,7 +44,7 @@ spec:
             - /bin/sh
             - -c
             - |
-              django-admin run_default_worker
+              celery -A inalix.base.celery_app worker -l info --pidfile=/tmp/pid.celery -n default
           readinessProbe:
             timeoutSeconds: 10
             periodSeconds: 20
