@@ -21,6 +21,7 @@ spec:
         name: inalix-secret
 
   backup:
+    retentionPolicy: "3d"
     barmanObjectStore:
       destinationPath: "s3://backup/postgresql/"
       endpointURL: http://inalix-system-minio.inalix-system.svc.cluster.local:9000

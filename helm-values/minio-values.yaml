@@ -1,6 +1,63 @@
 # cmd: helm install minio bitnami/minio --values minio-values.yaml -n minio --create-namespace
+#
+persistence:
+  size: 2Gi
 ingress:
   enabled: true
   hostname: minio.10-11-1-31.nip.io
-persistence:
-  size: 2Gi
+apiIngress:
+  enabled: true
+  hostname: public.10-11-1-31.nip.io
+
+provisioning:
+  enabled: false
+
+  usersExistingSecrets:
+    - centralized-minio-users
+
+    ## apiVersion: v1
+    ## kind: Secret
+    ## metadata:
+    ##   name: centralized-minio-users
+    ## type: Opaque
+    ## stringData:
+    ##   username1: |
+    ##     username=test-username
+    ##     password=test-password
+    ##     disabled=false
+    ##     policies=readwrite,consoleAdmin,diagnostics
+    ##     setPolicies=false
+
+
+  users:
+   - username: test-username
+     password: test-password
+     disabled: false
+     policies:
+       - readwrite
+       - consoleAdmin
+       - diagnostics
+     # When set to true, it will replace all policies with the specified.
+     # When false, the policies will be added to the existing.
+     setPolicies: false
+
+  buckets:
+    - name: test-bucket
+      # region: us-east-1
+      # Only when mode is 'distributed'
+      # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
+      versioning: false
+      # Versioning is automatically enabled if withLock is true
+      # ref: https://docs.min.io/docs/minio-bucket-versioning-guide.html
+      withLock: true
+      # Only when mode is 'distributed'
+      # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
+      lifecycle:
+        - id: TestPrefix7dRetention
+          prefix: test-prefix
+          disabled: false
+          expiry:
+            days: 7
+            # Days !OR! date
+            # date: "2021-11-11T00:00:00Z"
+            nonconcurrentDays: 3

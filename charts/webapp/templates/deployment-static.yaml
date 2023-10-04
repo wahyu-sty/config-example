@@ -23,8 +23,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "webapp.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: public
           emptyDir:
@@ -49,8 +47,7 @@ spec:
             - mountPath: /srv/http/
               name: public
         - name: {{ .Chart.Name }}-static-help
-          # image: "d.inalix.com/docs:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          image: "d.inalix.com/docs:v3"
+          image: "d.inalix.com/docs:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /bin/sh
@@ -62,8 +59,6 @@ spec:
               name: public
       containers:
         - name: {{ .Chart.Name }}-static
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "nginx:stable"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

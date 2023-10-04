@@ -12,7 +12,7 @@ package:
 
 	helm repo index repo/
 
-upload: 
+upload:
 	rsync repo/* inalix_site@inalix.com:charts.inalix.com/
 
 all: package upload

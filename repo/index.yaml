@@ -2,8 +2,8 @@ apiVersion: v1
 entries:
   daphne:
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.146996791+07:00"
-    digest: 61475ceb63226a4186a83a87a568ce67ba270549401bdc5e1e5481cfa1dd6526
+    created: "2023-10-04T16:26:21.218792947+07:00"
+    digest: 8f8265527ec347dabbe9f944664aff1623b18f9bfc01e6ae84e10bd1d78ade72
     name: daphne
     type: application
     urls:
@@ -11,7 +11,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-18T10:32:51.146576531+07:00"
+    created: "2023-10-04T16:26:21.21836294+07:00"
     description: A Helm chart for Kubernetes
     digest: 9380a57d1407224b6d3a65d75e369b6a7f2a0d0bbaee532d2b05d571f19a68c9
     name: daphne
@@ -21,7 +21,7 @@ entries:
     version: 0.1.0
   inalix:
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.166465035+07:00"
+    created: "2023-10-04T16:26:21.236524522+07:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -40,14 +40,14 @@ entries:
       repository: https://charts.inalix.com/
       version: 0.1.1
     description: Learn helm dev
-    digest: 45370202ab67f945f234e8bb57e07a0f38ee219087c29cabac513eaa7fd9abc0
+    digest: c1fbf3cdc5cef3f8efeb7390984138ea11e8d5dde219e33fd20f08d55600599e
     name: inalix
     type: application
     urls:
     - inalix-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.156120604+07:00"
+    created: "2023-10-04T16:26:21.226902624+07:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -74,7 +74,7 @@ entries:
     version: 0.1.0
   inalix-system:
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.187651242+07:00"
+    created: "2023-10-04T16:26:21.255823441+07:00"
     dependencies:
     - condition: pgadmin4.enabled
       name: pgadmin4
@@ -102,9 +102,9 @@ entries:
   webapp:
   - apiVersion: v2
     appVersion: v3-new
-    created: "2023-09-18T10:32:51.188124249+07:00"
+    created: "2023-10-04T16:26:21.256490597+07:00"
     description: A Helm chart for Kubernetes
-    digest: 5a4c88b75f03b6bae01018dc770a48e62c2a8dc89237c8fd574ab3bfae7d4a9d
+    digest: fe7e210837652990c004b3e3f4bbb437a9ff3791246d861c83b9cc05d9b57b6e
     name: webapp
     type: application
     urls:
@@ -112,16 +112,16 @@ entries:
     version: 0.1.0
   worker:
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.189034484+07:00"
+    created: "2023-10-04T16:26:21.258010378+07:00"
     description: A Helm chart for Kubernetes
-    digest: 89b26c1d0572dcf0ce3f940599b892f7c3a07a9da0522c994fb13f70e0a0fd54
+    digest: 150abadd8f17b2ec4b85d1a4bef220091fc960875fbd03e078905aec8dd506a3
     name: worker
     type: application
     urls:
     - worker-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
-    created: "2023-09-18T10:32:51.188597108+07:00"
+    created: "2023-10-04T16:26:21.257222513+07:00"
     description: A Helm chart for Kubernetes
     digest: 2bbfd99a557fb44d77348e36dc56e88828e4f0c8f7ded32bc59c0607029aab80
     name: worker
@@ -129,4 +129,4 @@ entries:
     urls:
     - worker-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-18T10:32:51.145977696+07:00"
+generated: "2023-10-04T16:26:21.217686528+07:00"

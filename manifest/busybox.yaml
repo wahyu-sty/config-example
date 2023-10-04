@@ -15,9 +15,30 @@ spec:
       labels:
         app: busybox
     spec:
+      volumes:
+        - name: helm-values
+          configMap:
+            name: helm-values
+        - name: helm-values-minio
+          configMap:
+            name: helm-values
+            items:
+              - key: minio-values.yaml
+                path: minio.yaml
+        - name: inalix-server-key
+          configMap:
+            name: inalix-server-key
+            items:
+              - key: drives.yaml
+                path: server.key
       containers:
       - image: busybox
         name: busybox
+        volumeMounts:
+          - name: helm-values
+            mountPath: /etc/helm-values
+          - name: inalix-server-key
+            mountPath: /etc/inalix/
         command:
           - sleep
           - infinity

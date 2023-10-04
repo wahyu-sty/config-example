@@ -25,12 +25,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "daphne.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -45,8 +41,8 @@ spec:
           command:
             - /bin/sh
             - -c
-          args:
-            - /usr/local/bin/daphne -b 0.0.0.0 inalix.asgi:application
+            - |
+              /usr/local/bin/daphne -v {{ .Values.daphneVerbosity | default 2 }} --access-log - -b 0.0.0.0 inalix.asgi:application
           readinessProbe:
             timeoutSeconds: 10
             periodSeconds: 10
@@ -54,12 +50,11 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - 'curl -qs -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Origin: http://127.0.0.1:80" localhost:8000'
+                - |
+                  curl -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Origin: http://127.0.0.1:80" 127.0.0.1:8000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: {{ .Chart.Name }}-worker
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "d.inalix.com/core:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
@@ -70,8 +65,8 @@ spec:
           command:
             - /bin/sh
             - -c
-          args:
-            - django-admin runworker websocket
+            - |
+              django-admin runworker websocket
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

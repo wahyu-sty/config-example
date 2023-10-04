@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minio
+  name: minio-console
   namespace: inalix-system
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,15 +15,23 @@ spec:
     helm:
       version: v3
       values: |
+        mode: standalone
+
         ingress:
           enabled: true
-          hostname: minio.local.gd
+          hostname: console.minio.10-11-1-31.nip.io
+
+        apiIngress:
+          enabled: true
+          hostname: static.minio.10-11-1-31.nip.io
 
         persistence:
           size: 1Gi
 
+        defaultBuckets: "media, backup, static"
+
   destination:
-    namespace: inalix-system
+    namespace: minio-operator
     server: https://kubernetes.default.svc
 
   syncPolicy:

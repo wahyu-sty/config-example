@@ -18,11 +18,11 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "daphne.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-daphne-strip-prefix@kubernetescrd
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-    traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.appNamespace }}-daphne-strip-prefix@kubernetescrd
-  {{- end }}
+    {{- end }}
 spec:
   {{- if and .Values.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
   ingressClassName: {{ .Values.ingress.className }}
