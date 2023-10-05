@@ -22,18 +22,21 @@ workerDefault:
 
 workerOutput:
   enabled: true
+  name: "output"
   replicas: 1
-  concurency: 1
+  concurency: 2
 
 workerOutputNormal:
   enabled: true
+  name: "output_normal"
   replicas: 1
-  concurency: 1
+  concurency: 2
 
 workerOutputHigh:
   enabled: true
+  name: "output_high"
   replicas: 1
-  concurency: 1
+  concurency: 2
 
 workerAasPlayer:
   enabled: false

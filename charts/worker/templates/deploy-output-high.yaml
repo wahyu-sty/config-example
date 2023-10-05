@@ -1,16 +1,17 @@
 {{- if .Values.workerOutputHigh.enabled -}}
+{{- $item := .Values.workerOutputHigh -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "worker.fullname" . }}-output-high
+  name: {{ include "worker.fullname" . }}-{{ $item.name }}
   labels:
-    inalix/app.worker: output-high
+    inalix/app.worker: {{ $item.name }}
     {{- include "worker.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.workerOutputHigh.replicas }}
+  replicas: {{ $item.replicas }}
   selector:
     matchLabels:
-      inalix/app.worker: output-high
+      inalix/app.worker: {{ $item.name }}
       {{- include "worker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
@@ -19,7 +20,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        inalix/app.worker: output-high
+        inalix/app.worker: {{ $item.name }}
         {{- include "worker.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -44,7 +45,7 @@ spec:
             - /bin/sh
             - -c
             - |
-              celery -A inalix.base.celery_app worker -l info -c 1 -Q output_high -n output_high
+              celery -A inalix.base.celery_app worker -l info -c {{ $item.concurency | default 1 }} -Q output_high -n {{ $item.name }}
           readinessProbe:
             timeoutSeconds: 10
             periodSeconds: 20
