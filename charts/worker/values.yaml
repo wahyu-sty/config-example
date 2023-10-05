@@ -28,13 +28,13 @@ workerOutput:
 
 workerOutputNormal:
   enabled: true
-  name: "output_normal"
+  name: "output-normal"
   replicas: 1
   concurency: 2
 
 workerOutputHigh:
   enabled: true
-  name: "output_high"
+  name: "output-high"
   replicas: 1
   concurency: 2
 
