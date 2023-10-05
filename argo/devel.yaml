@@ -18,7 +18,7 @@ spec:
 
         webapp:
           enabled: true
-          replicaCount: 2
+          replicaCount: 1
           imagePullSecrets:
             - name: d-inalix-cred
           image:
@@ -40,6 +40,34 @@ spec:
           ingress:
             enabled: true
             hostname: devel.10-11-1-31.nip.io
+
+          workerDefault:
+            enabled: true
+            replicas: 1
+            concurency: 3
+
+          workerOutput:
+            enabled: true
+            concurency: 3
+
+          workerOutputNormal:
+            enabled: true
+            name: output-normal
+            concurency: 3
+
+          workerOutputHigh:
+            enabled: false
+            concurency: 3
+
+          workerAasPlayer:
+            enabled: false
+
+          workerBhsServer:
+            enabled: false
+
+          inxSync:
+            enabled: false
+
   destination:
     namespace: devel
     server: https://kubernetes.default.svc
