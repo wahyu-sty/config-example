@@ -1,3 +1,0 @@
-gakjelas:
-  image: coba saja
-  tag: {{ .Release.Name }}
